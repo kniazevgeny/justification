@@ -3,6 +3,8 @@ import Router from "koa-router";
 import bodyParser from "koa-bodyparser";
 import dotenv from "dotenv";
 
+import justifyRoute from "./routes/justifyRoute";
+
 void (async () => {
   console.log("Starting server");
 
@@ -21,7 +23,8 @@ void (async () => {
     })
   );
 
-  // TODO: Routes
+  // Routes
+  router.use("/api", justifyRoute.routes(), justifyRoute.allowedMethods());
 
   app.use(router.routes()).use(router.allowedMethods());
 

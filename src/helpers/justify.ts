@@ -1,0 +1,1 @@
+export const processJustification = (s: string) => [s, s].join(" ")
