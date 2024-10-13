@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "distribute": "npm build && node dist/server.js",
+    "distribute": "npm run build && node dist/server.js",
     "start": "tsc-watch --skipLibCheck --onSuccess \"node dist/server.js\"",
     "build": "tsc --skipLibCheck",
     "test": "echo \"Error: no test specified\" && exit 1"
