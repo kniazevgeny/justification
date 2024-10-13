@@ -1,0 +1,29 @@
+{
+  "name": "justification",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/server.js",
+  "scripts": {
+    "distribute": "npm build && node dist/server.js",
+    "start": "tsc-watch --skipLibCheck --onSuccess 'node dist/server.js'",
+    "build": "tsc --skipLibCheck",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
+    "koa": "^2.15.3",
+    "koa-bodyparser": "^4.4.1",
+    "koa-router": "^13.0.1"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/koa": "^2.15.0",
+    "@types/koa-router": "^7.4.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
