@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "distribute": "npm build && node dist/server.js",
-    "start": "tsc-watch --skipLibCheck --onSuccess 'node dist/server.js'",
+    "start": "tsc-watch --skipLibCheck --onSuccess \"node dist/server.js\"",
     "build": "tsc --skipLibCheck",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +17,8 @@
     "jsonwebtoken": "^9.0.2",
     "koa": "^2.15.3",
     "koa-bodyparser": "^4.4.1",
-    "koa-router": "^13.0.1"
+    "koa-router": "^13.0.1",
+    "tsc-watch": "^6.2.0"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.7",
