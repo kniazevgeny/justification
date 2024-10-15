@@ -3,6 +3,7 @@ import Router from "koa-router";
 import bodyParser from "koa-bodyparser";
 import dotenv from "dotenv";
 
+import tokenRoute from "./routes/tokenRoute";
 import justifyRoute from "./routes/justifyRoute";
 
 void (async () => {
@@ -24,6 +25,7 @@ void (async () => {
   );
 
   // Routes
+  router.use('/api', tokenRoute.routes(), tokenRoute.allowedMethods());
   router.use("/api", justifyRoute.routes(), justifyRoute.allowedMethods());
 
   app.use(router.routes()).use(router.allowedMethods());
