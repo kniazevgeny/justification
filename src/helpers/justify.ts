@@ -7,8 +7,8 @@ const LINE_LENGTH = 80;
  */
 const replaceSingularNewline = (text: string): string => {
   return text
-    .replace(/[\n\r]+/g, ' ')      // Replace all newlines with space
-    .replace(/\s{2,}/g, ' ')       // Replace multiple spaces with single space
+    .replace(/[\n\r]+/g, " ") // Replace all newlines with space
+    .replace(/\s{2,}/g, " ") // Replace multiple spaces with single space
     .trim();
 };
 
@@ -21,7 +21,7 @@ const replaceSingularNewline = (text: string): string => {
 const justifyLine = (words: string[], extraSpaces: number): string => {
   if (words.length === 1) {
     // If there's only one word, pad the end with spaces.
-    return words[0].padEnd(LINE_LENGTH, ' ');
+    return words[0].padEnd(LINE_LENGTH, " ");
   }
 
   const spacesBetweenWords = Math.floor(extraSpaces / (words.length - 1));
@@ -33,11 +33,13 @@ const justifyLine = (words: string[], extraSpaces: number): string => {
         return word; // Last word, no extra spaces.
       }
       // Each space between words has 1 (minimum) + spacesBetweenWords + (if extra, 1)
-      const spacesToInsert = 1 + spacesBetweenWords + (remainingExtraSpaces > 0 ? 1 : 0);
-      remainingExtraSpaces = remainingExtraSpaces > 0 ? remainingExtraSpaces - 1 : 0;
-      return word + ' '.repeat(spacesToInsert);
+      const spacesToInsert =
+        1 + spacesBetweenWords + (remainingExtraSpaces > 0 ? 1 : 0);
+      remainingExtraSpaces =
+        remainingExtraSpaces > 0 ? remainingExtraSpaces - 1 : 0;
+      return word + " ".repeat(spacesToInsert);
     })
-    .join('');
+    .join("");
 };
 
 /**
@@ -46,7 +48,7 @@ const justifyLine = (words: string[], extraSpaces: number): string => {
  * @returns The justified paragraph.
  */
 const processParagraph = (paragraph: string): string => {
-  const words = paragraph.split(' ').filter(word => word.length > 0);
+  const words = paragraph.split(" ").filter((word) => word.length > 0);
   const justifiedParagraph: string[] = [];
   let currentLine: string[] = [];
   let currentLength = 0;
@@ -70,10 +72,10 @@ const processParagraph = (paragraph: string): string => {
 
   // Handle the last line (left-justified)
   if (currentLine.length > 0) {
-    justifiedParagraph.push(currentLine.join(' '));
+    justifiedParagraph.push(currentLine.join(" "));
   }
 
-  return justifiedParagraph.join('\n');
+  return justifiedParagraph.join("\n");
 };
 
 /**
@@ -82,11 +84,15 @@ const processParagraph = (paragraph: string): string => {
  * @returns The fully justified text.
  */
 export const processJustification = (text: string): string => {
+  if (typeof text !== "string") {
+    throw new Error("Invalid input: Text must be a string.");
+  }
+
   return text
-    .split('\n\n')                    // Split into paragraphs
-    .map(paragraph => paragraph.trim())
-    .filter(paragraph => paragraph.length > 0)
+    .split("\n\n") // Split into paragraphs
+    .map((paragraph) => paragraph.trim())
+    .filter((paragraph) => paragraph.length > 0)
     .map(replaceSingularNewline) // Normalize text
     .map(processParagraph)
-    .join('\n');
+    .join("\n");
 };

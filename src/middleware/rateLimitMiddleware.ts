@@ -2,7 +2,7 @@ import { Context, Next } from "koa";
 
 const rateLimitMap: { [key: string]: { count: number; resetTime: number } } =
   {};
-const WORD_LIMIT = 5000;
+const WORD_LIMIT = 80000;
 
 export interface RateLimitedContext extends Context {
   state: {
@@ -14,13 +14,12 @@ export interface RateLimitedContext extends Context {
 export const rateLimiter = async (ctx: RateLimitedContext, next: Next) => {
   const userEmail = ctx.state.user.email;
   const currentTime = Date.now();
-  const nextDayStart = new Date(currentTime +  1 * 1 * 60 * 1000).getTime();
-  // .setHours(
-  //   0,
-  //   0,
-  //   0,
-  //   0
-  // );
+  const nextDayStart = new Date(currentTime + 24 * 60 * 60 * 1000).setHours(
+    0,
+    0,
+    0,
+    0
+  );
 
   if (!rateLimitMap[userEmail]) {
     rateLimitMap[userEmail] = {
@@ -43,4 +42,11 @@ export const rateLimiter = async (ctx: RateLimitedContext, next: Next) => {
 
   rateLimitMap[userEmail].count += wordCount;
   await next();
+};
+
+// Export a reset function for testing purposes
+export const resetRateLimit = () => {
+  for (const key in rateLimitMap) {
+    delete rateLimitMap[key];
+  }
 };
