@@ -4,15 +4,15 @@ Welcome to the **Declarative Justify API**, where backend alchemy meets text for
 
 ## 📚 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [API Documentation](#api-documentation)
-- [Testing](#testing)
-- [License](#license)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Usage](#-usage)
+- [API Documentation](#-api-documentation)
+- [Testing](#-testing)
+- [License](#-license)
 
 ## 🌟 Overview
 
@@ -48,7 +48,7 @@ Why settle for mundane text formatting when you can **productize space between w
    ```bash
    npm install
    ```
-   
+
 ## 🔧 Configuration
 
 1. **Set Up Environment Variables:**
