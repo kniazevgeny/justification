@@ -1,4 +1,4 @@
-# Space-Between Sorcery: Backend Developers’ Secret to Productizing CSS features
+# Text-justify Sorcery: Backend Developers’ Secret to Productizing CSS features
 
 Welcome to the **Declarative Justify API**, where backend alchemy meets text formatting wizardry. Transform your plain text with the magic of space manipulation.
 
@@ -47,6 +47,11 @@ Why settle for mundane text formatting when you can **productize space between w
 2. **Install Dependencies:**
    ```bash
    npm install
+   ```
+
+3. **Create a .env file:**
+   ```bash
+   mv .env.sample .env
    ```
 
 ## 🔧 Configuration
