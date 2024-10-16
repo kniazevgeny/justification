@@ -26,21 +26,25 @@ export const rateLimiter = async (ctx: RateLimitedContext, next: Next) => {
       count: 0,
       resetTime: nextDayStart,
     };
+    console.info(`Initialized user ${userEmail}`)
   }
 
   if (currentTime > rateLimitMap[userEmail].resetTime) {
     rateLimitMap[userEmail].count = 0;
     rateLimitMap[userEmail].resetTime = nextDayStart;
+    console.info(`Ratelimit reset for ${userEmail}`)
   }
 
   const wordCount = ctx.state.wordCount || 0;
   if (rateLimitMap[userEmail].count + wordCount > WORD_LIMIT) {
     ctx.status = 402;
     ctx.body = { message: "Payment Required: Rate limit exceeded" };
+    console.info(`Ratelimit exceeded by ${userEmail}`)
     return;
   }
 
   rateLimitMap[userEmail].count += wordCount;
+  console.info(`+${wordCount} words to proccess for ${userEmail}`)
   await next();
 };
 
