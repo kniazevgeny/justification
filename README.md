@@ -48,12 +48,7 @@ Why settle for mundane text formatting when you can **productize space between w
    ```bash
    npm install
    ```
-
-3. **Create a .env file:**
-   ```bash
-   mv .env.sample .env
-   ```
-
+   
 ## 🔧 Configuration
 
 1. **Set Up Environment Variables:**
@@ -63,6 +58,10 @@ Why settle for mundane text formatting when you can **productize space between w
    ```env
    PORT=3000
    TOKEN_SECRET=your_jwt_secret
+   ```
+   Or just use preset values
+   ```bash
+   mv .env.sample .env
    ```
   
 ## 🏃‍♂️ Usage
